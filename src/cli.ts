@@ -1,7 +1,7 @@
 import * as mod from "https://deno.land/std@0.178.0/dotenv/mod.ts";
 import { parse } from "https://deno.land/std@0.66.0/flags/mod.ts";
 import { createContext } from "./natural-script/context.ts";
-import { execNaturalScriptFile } from "./natural-script/index.ts";
+import { execNaturalScriptFile } from "./natural-script/exec/index.ts";
 
 const { OPENAI_API_KEY: openaiApiKey } = await mod.load({
   envPath: "./.env.local",

@@ -6,5 +6,12 @@ export const createContext = (openaiApiKey: string): Context => {
   }
   return {
     openaiApiKey,
+    config: {
+      json: {
+        input: "base.json",
+        output: "base.json",
+      },
+    },
+    variables: {},
   };
 };

@@ -1,7 +1,7 @@
 import { unified } from "npm:unified";
 import remarkParse from "npm:remark-parse";
-import { completeChat, Message } from "./llm.ts";
-import { Context } from "./types.ts";
+import { completeChat } from "./llm.ts";
+import { Context, Message } from "./types.ts";
 
 const parser = unified().use(remarkParse);
 
@@ -9,7 +9,6 @@ export const execNaturalScriptFile = async (
   context: Context,
   filePath: string
 ): Promise<string | null> => {
-  console.log(filePath);
   const text = await Deno.readTextFile(filePath);
   return execNaturalScript(context, text);
 };

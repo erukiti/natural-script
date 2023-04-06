@@ -1,9 +1,4 @@
-import { Context } from "./types.ts";
-
-export type Message = {
-  role: "user" | "system" | "assistant";
-  content: string;
-};
+import { Context, Message } from "./types.ts";
 
 /** prompt で与えた文章を補完する */
 export const completeChat = async (

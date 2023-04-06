@@ -23,13 +23,14 @@ LLMを使うと自然言語でプログラミングができるが、プロン�
 
 コードブロックでプロンプトを指定する。
 
+````
 ```system
 日本の経済低迷について教えてください。
 ```
+````
 
 ### CLIとして使う
 
 ```
 deno run --allow-net --allow-env --allow-read src/cli.ts examples/simple.md
 ```
-
