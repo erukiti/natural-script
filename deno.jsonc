@@ -1,5 +1,6 @@
 {
   "tasks": {
-    "dev": "deno run --allow-net --allow-env main.ts"
+    "build:npm": "deno run -A ./scripts/build_npm.ts",
+    "publish:npm": "(cd npm && npm publish)"
   }
 }

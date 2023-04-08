@@ -18,7 +18,7 @@ export const completeChat = async (
     },
     body,
   });
-  const data = await res.json();
+  const data: any = await res.json();
 
   const choice = 0;
 
