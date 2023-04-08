@@ -11,10 +11,7 @@ export const createContext = (
     isVerbose: false,
     openaiApiKey,
     config: {
-      json: {
-        input: "base.json",
-        output: "base.json",
-      },
+      json: {},
     },
     variables: {},
     ...opt,
