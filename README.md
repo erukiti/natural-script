@@ -31,6 +31,77 @@ LLMを使うと自然言語でプログラミングができるが、プロン�
 
 ### CLIとして使う
 
-```
+```sh
 deno run --allow-net --allow-env --allow-read src/cli.ts examples/simple.md
 ```
+
+## 変数
+
+コードブロックで`:hoge`のようにコロンで始まる名前をつけた場合、変数として登録される。
+
+````md
+```:hoge
+ほげ
+```
+
+```plaintext :fuga
+ふが
+```
+````
+
+これらは、それぞれ `hoge` と `fuga` という変数名で登録される。
+
+変数は `{hoge}` `{fuga}` のような記法で展開が可能である。
+
+````md
+```system
+{hoge}
+{fuga}
+```
+````
+
+## フロントマター
+
+Markdownの先頭にフロントマターを記述できる。
+
+````md
+---
+output: "result"
+json:
+  output: "base.json"
+---
+
+```system
+日本の経済低迷について教えてください。
+```
+````
+
+このようなMarkdownを実行した場合、LLMの実行結果が `base.json` の `result` という項目に出力される。
+
+変数は Markdown の中で定義が可能だが、JSONファイルから読み込むことも可能である。
+
+```json
+{
+  "hoge": "ほげ"
+}
+```
+
+というような JSON ファイルが `base.json` という名前で存在する場合
+
+````md
+```system
+{hoge}
+```
+````
+
+の `{hoge}` は JSON ファイルから読み取った `ほげ` に展開される。
+
+### デフォルト値
+
+```yaml
+json:
+  output: "base.json"
+  input: "base.json"
+```
+
+がデフォルト値として指定されている。
