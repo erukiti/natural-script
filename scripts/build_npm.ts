@@ -10,7 +10,7 @@ await build({
     undici: true,
   },
   package: {
-    name: "natural-script",
+    name: "@natural-script/natural-script",
     version: "0.1.1",
     description: "Natural Script programming",
     license: "MIT",
