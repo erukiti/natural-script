@@ -10,6 +10,9 @@ export const completeChat = async (
     model: "gpt-3.5-turbo",
   });
 
+  context.isVerbose &&
+    console.log("completeChat message:", JSON.stringify(messages, null, "  "));
+
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -21,6 +24,8 @@ export const completeChat = async (
   const data: any = await res.json();
 
   const choice = 0;
+
+  context.isVerbose && console.log("completeChat usage:", data.usage);
 
   return data.choices[choice].message;
 };

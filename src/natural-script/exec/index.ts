@@ -8,6 +8,7 @@ export const execNaturalScriptFile = async (
   context: Context,
   filePath: string
 ): Promise<string | null> => {
+  context.isVerbose && console.log(`exec NaturalScript: ${filePath}`);
   const text = await Deno.readTextFile(filePath);
   return execNaturalScript(context, text, dirname(filePath));
 };
@@ -18,7 +19,7 @@ export const execNaturalScript = async (
   scriptDir: string
 ): Promise<string | null> => {
   const parsed = await preprocessNaturalScript(context, markdown, scriptDir);
-
+  context.isVerbose && console.log("config", context.config);
   const output = await processNaturalScript(parsed, context);
   await postprocessNaturalScript(context, output, scriptDir);
 

@@ -17,9 +17,11 @@ if (Deno.args.length === 0) {
   Deno.exit(1);
 }
 
-const parsedArgs = parse(Deno.args);
+const parsedArgs = parse(Deno.args, { boolean: ["V", "verbose"] });
 
-const context = createContext(openaiApiKey);
+const isVerbose: boolean = parsedArgs.V || parsedArgs.verbose;
+
+const context = createContext(openaiApiKey, { isVerbose });
 
 parsedArgs._.map(async (arg) => {
   if (typeof arg !== "string") {

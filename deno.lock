@@ -158,7 +158,9 @@
   },
   "npm": {
     "specifiers": {
+      "@types/js-yaml": "@types/js-yaml@4.0.5",
       "js-yaml": "js-yaml@4.1.0",
+      "mdast": "mdast@3.0.0",
       "remark": "remark@14.0.2",
       "remark-frontmatter": "remark-frontmatter@4.0.1",
       "remark-html": "remark-html@15.0.2",
@@ -178,6 +180,10 @@
         "dependencies": {
           "@types/unist": "@types/unist@2.0.6"
         }
+      },
+      "@types/js-yaml@4.0.5": {
+        "integrity": "sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==",
+        "dependencies": {}
       },
       "@types/mdast@3.0.11": {
         "integrity": "sha512-Y/uImid8aAwrEA24/1tcRZwpxX3pIFTSilcNDKSPn+Y2iDywSEachzRuvgAYYLR3wpGXAsMbv5lvKLDZLeYPAw==",
@@ -437,6 +443,10 @@
         "dependencies": {
           "@types/mdast": "@types/mdast@3.0.11"
         }
+      },
+      "mdast@3.0.0": {
+        "integrity": "sha512-xySmf8g4fPKMeC07jXGz971EkLbWAJ83s4US2Tj9lEdnZ142UP5grN73H1Xd3HzrdbU5o9GYYP/y8F9ZSwLE9g==",
+        "dependencies": {}
       },
       "micromark-core-commonmark@1.0.6": {
         "integrity": "sha512-K+PkJTxqjFfSNkfAhp4GB+cZPfQd6dxtTXnf+RjZOV7T4EEXnvgzOcnp+eSTmpGk9d1S9sL6/lqrgSNn/s0HZA==",

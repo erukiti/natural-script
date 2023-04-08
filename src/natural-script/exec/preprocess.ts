@@ -39,9 +39,9 @@ export const preprocessNaturalScript = async (
     const input = context.config.json.input;
     if (typeof input === "string") {
       try {
-        const data = JSON.parse(
-          await Deno.readTextFile(`${scriptDir}/${input}`)
-        );
+        const inputFileName = `${scriptDir}/${input}`;
+        context.isVerbose && console.log(`read: ${inputFileName}`);
+        const data = JSON.parse(await Deno.readTextFile(`${inputFileName}`));
         context.variables = {
           ...context.variables,
           ...data,

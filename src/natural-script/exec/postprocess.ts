@@ -13,6 +13,7 @@ export const postprocessNaturalScript = (
     typeof context.config.json.output === "string"
   ) {
     const outputFilePath = `${scriptDir}/${context.config.json.output}`;
+    context.isVerbose && console.log(`write: ${outputFilePath}}`);
     context.variables[context.config.output] = output;
     Deno.writeTextFileSync(outputFilePath, JSON.stringify(context.variables));
   }

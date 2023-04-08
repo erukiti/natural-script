@@ -4,6 +4,7 @@ export type Context = {
   openaiApiKey: string;
   config: Config;
   variables: { [props: string]: string };
+  isVerbose: boolean;
 };
 
 export type Message = {
