@@ -20,6 +20,7 @@ export const execNaturalScript = async (
 ): Promise<string | null> => {
   const parsed = await preprocessNaturalScript(context, markdown, scriptDir);
   context.isVerbose && console.log("config", context.config);
+  context.isVerbose && console.log("variables", context.variables);
   const output = await processNaturalScript(parsed, context);
   await postprocessNaturalScript(context, output, scriptDir);
 

@@ -28,5 +28,5 @@ for (const arg of parsedArgs._) {
     continue;
   }
   const res = await execNaturalScriptFile(context, arg);
-  console.log(res);
+  console.log(`\n${res}\n`);
 }
