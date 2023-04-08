@@ -12,6 +12,7 @@ export const createContext = (
     openaiApiKey,
     config: {
       json: {},
+      models: ["gpt-3.5-turbo"],
     },
     variables: {},
     ...opt,

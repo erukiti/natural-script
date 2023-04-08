@@ -1,4 +1,4 @@
-import { completeChat } from "../llm.ts";
+import { llm } from "../llm.ts";
 import { Context, Message } from "../types.ts";
 import mdast from "npm:mdast";
 import { extract } from "./extract.ts";
@@ -36,7 +36,7 @@ export const processNaturalScript = async (parsed: Node, context: Context) => {
   });
 
   if (messages.length > 0) {
-    const res = await completeChat(context, messages);
+    const res = await llm(context, messages);
     if (!res?.content) {
       throw new Error("生成できませんでした");
     }

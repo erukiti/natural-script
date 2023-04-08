@@ -1,31 +1,37 @@
 import { Context, Message } from "./types.ts";
+import { completeChat } from "./llm/openai-chat-completion.ts";
+import { completeText } from "./llm/openai-text-completion.ts";
 
-/** prompt で与えた文章を補完する */
-export const completeChat = async (
+export const llm = (
   context: Context,
   messages: Message[]
 ): Promise<Message | undefined> => {
-  const body = JSON.stringify({
-    messages,
-    model: "gpt-3.5-turbo",
-  });
-
-  context.isVerbose &&
-    console.log("completeChat message:", JSON.stringify(messages, null, "  "));
-
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${context.openaiApiKey}`,
-    },
-    body,
-  });
-  const data: any = await res.json();
-
-  const choice = 0;
-
-  context.isVerbose && console.log("completeChat usage:", data.usage);
-
-  return data.choices[choice].message;
+  if (
+    !Array.isArray(context.config.models) ||
+    context.config.models.length === 0
+  ) {
+    throw new Error("models is not set");
+  }
+  const model = context.config.models[0];
+  switch (model) {
+    case "gpt-4":
+    case "gpt-4-0314":
+    case "gpt-4-32k":
+    case "gpt-4-32k-0314":
+    case "gpt-3.5-turbo":
+    case "gpt-3.5-turbo-0301":
+      return completeChat(context, messages, model);
+    case "text-davinci-003":
+    case "text-davinci-002":
+    case "text-curie-001":
+    case "text-babbage-001":
+    case "text-ada-001":
+    case "davinci":
+    case "curie":
+    case "babbage":
+    case "ada":
+      return completeText(context, messages, model);
+    default:
+      throw new Error(`model ${model} is not supported`);
+  }
 };
