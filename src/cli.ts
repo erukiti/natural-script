@@ -23,10 +23,10 @@ const isVerbose: boolean = parsedArgs.V || parsedArgs.verbose;
 
 const context = createContext(openaiApiKey, { isVerbose });
 
-parsedArgs._.map(async (arg) => {
+for (const arg of parsedArgs._) {
   if (typeof arg !== "string") {
-    return;
+    continue;
   }
   const res = await execNaturalScriptFile(context, arg);
   console.log(res);
-});
+}
